@@ -1,7 +1,6 @@
 import { Center, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
-import * as THREE from "three";
 
 export function Menkaure() {
   const { nodes, materials } = useGLTF(
@@ -16,8 +15,9 @@ export function Menkaure() {
 
   return (
     <group dispose={null}>
-      <group ref={model}>
-        <Center rotation={[-1.47, -1.93, -0.91]} scale={0.05}>
+      {/* Add 'target' to set the pivot point in the center of the mesh*/}
+      <group ref={model} target={[0, 0, 0]}>
+        <Center rotation={[-1.3, -1.93, -0.91]} scale={0.05}>
           <mesh
             castShadow
             receiveShadow

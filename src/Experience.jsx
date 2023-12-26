@@ -1,15 +1,11 @@
-import { OrbitControls } from "@react-three/drei";
-import Lights from "./Lights";
+import Lights from "./components/Lights";
+import { Menkaure } from "./components/Menkaure";
 
 function App() {
   return (
     <>
-      <OrbitControls />
       <Lights />
-      <mesh>
-        <boxGeometry args={[3, 3]} />
-        <meshStandardMaterial color="lightblue" />
-      </mesh>
+      <Menkaure />
     </>
   );
 }

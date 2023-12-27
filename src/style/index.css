@@ -8,6 +8,14 @@ body,
   padding: 0px;
 }
 
+.main-header {
+  font-family: "Lora", serif;
+}
+
+.bottom-description {
+  font-family: "Lora", serif;
+}
+
 .canvas {
   width: 100%;
   height: 80%;

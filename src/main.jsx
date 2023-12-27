@@ -4,6 +4,7 @@ import App from "./Experience.jsx";
 import "./style/index.css";
 import { Canvas } from "@react-three/fiber";
 import { MainHeader } from "./components/MainHeader.jsx";
+import { BottomDescription } from "./components/BottomDescription.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       >
         <App />
       </Canvas>
+      <BottomDescription />
     </div>
   </React.StrictMode>
 );

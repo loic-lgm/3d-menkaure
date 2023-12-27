@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       >
         <App />
       </Canvas>
-      <BottomDescription />
     </div>
+    <BottomDescription />
   </React.StrictMode>
 );

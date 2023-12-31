@@ -2,7 +2,7 @@ import { Stars } from "@react-three/drei";
 import Lights from "./components/Lights";
 import { Menkaure } from "./components/Menkaure";
 
-function App() {
+function Experience() {
   return (
     <>
       <Lights />
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default Experience;

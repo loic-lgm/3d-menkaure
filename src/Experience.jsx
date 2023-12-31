@@ -8,8 +8,8 @@ function App() {
       <Lights />
       <Menkaure />
       <Stars
-        radius={100}
-        depth={1}
+        radius={50}
+        depth={50}
         count={5000}
         factor={4}
         saturation={0}

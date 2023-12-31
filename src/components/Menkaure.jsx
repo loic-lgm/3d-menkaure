@@ -18,7 +18,7 @@ export function Menkaure() {
       <group dispose={null}>
         {/* Add 'target' to set the pivot point in the center of the mesh*/}
         <group ref={model} target={[0, 0, 0]}>
-          <Center rotation={[-1.3, -1.93, -0.91]} scale={0.05}>
+          <Center rotation={[-1.3, -1.93, -0.91]} scale={0.03}>
             <mesh
               castShadow
               receiveShadow

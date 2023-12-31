@@ -14,31 +14,33 @@ export function Menkaure() {
   });
 
   return (
-    <group dispose={null}>
-      {/* Add 'target' to set the pivot point in the center of the mesh*/}
-      <group ref={model} target={[0, 0, 0]}>
-        <Center rotation={[-1.3, -1.93, -0.91]} scale={0.05}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_2.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_3.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_4.geometry}
-            material={materials.material_0}
-          />
-        </Center>
+    <>
+      <group dispose={null}>
+        {/* Add 'target' to set the pivot point in the center of the mesh*/}
+        <group ref={model} target={[0, 0, 0]}>
+          <Center rotation={[-1.3, -1.93, -0.91]} scale={0.03}>
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.Object_2.geometry}
+              material={materials.material_0}
+            />
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.Object_3.geometry}
+              material={materials.material_0}
+            />
+            <mesh
+              castShadow
+              receiveShadow
+              geometry={nodes.Object_4.geometry}
+              material={materials.material_0}
+            />
+          </Center>
+        </group>
       </group>
-    </group>
+    </>
   );
 }
 

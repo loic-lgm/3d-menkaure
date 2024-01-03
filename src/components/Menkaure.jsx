@@ -1,6 +1,6 @@
 import { Center, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Menkaure({ page }) {
   const { nodes, materials } = useGLTF(
@@ -8,17 +8,21 @@ export function Menkaure({ page }) {
   );
 
   const model = useRef();
-  let lastYRotation = 0;
+  const [shouldRotate, setShouldRotate] = useState(true);
 
   useFrame((state, delta) => {
-    if (page == 1) {
-      model.current.rotation.y += delta * 0.08;
-      lastYRotation = model.current.rotationY;
+    if (page == 0) {
+      model.current.rotation.y += delta * 0.06;
+      model.current.rotation.x = 0;
+    } else {
+      // model.current.rotation.y = 0;
     }
-    if (page == 2) {
-      model.current.rotation.x += delta * Math.PI;
+    if (model.current.rotation.x >= 1.5) {
+      setShouldRotate(false);
     }
-    // console.log(model.current.rotation);
+    if (page == 1 && shouldRotate) {
+      model.current.rotation.x += delta * 0.06;
+    }
   });
 
   return (

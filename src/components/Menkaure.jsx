@@ -1,16 +1,24 @@
 import { Center, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
-export function Menkaure() {
+export function Menkaure({ page }) {
   const { nodes, materials } = useGLTF(
     "./pyramid_of_menkaure_giza_pyramid_complex_egypt.glb"
   );
 
   const model = useRef();
+  let lastYRotation = 0;
 
   useFrame((state, delta) => {
-    model.current.rotation.y += delta * 0.08;
+    if (page == 1) {
+      model.current.rotation.y += delta * 0.08;
+      lastYRotation = model.current.rotationY;
+    }
+    if (page == 2) {
+      model.current.rotation.x += delta * Math.PI;
+    }
+    // console.log(model.current.rotation);
   });
 
   return (

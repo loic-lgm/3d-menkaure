@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-
 export default function ScrollButton({
-  position,
+  direction,
   innerRef,
   page,
   setPage,
@@ -19,7 +17,7 @@ export default function ScrollButton({
 
   return (
     <div className="scroll-button">
-      {position === "top" ? (
+      {direction === "top" ? (
         <i ref={innerRef} className={topClassName} onClick={handleClick}></i>
       ) : (
         <i ref={innerRef} className={bottomClassName} onClick={handleClick}></i>

@@ -4,6 +4,10 @@ import Experience from "../Experience";
 import { BottomDescription } from "./BottomDescription";
 import ScrollButton from "./ScrollButton";
 import { useEffect, useRef, useState } from "react";
+import {
+  firstDescription,
+  secondDescription,
+} from "../data/contentDescription";
 
 export default function App() {
   const topButtonRef = useRef();
@@ -46,20 +50,21 @@ export default function App() {
               position: [0, 2, 8],
             }}
           >
-            <Experience />
+            <Experience page={page} />
           </Canvas>
         </div>
-        <BottomDescription />
+        {page == 0 && <BottomDescription content={firstDescription} />}
+        {page == 1 && <BottomDescription content={secondDescription} />}
         <div className="scroll-button-container">
           <ScrollButton
-            position="top"
+            direction="top"
             innerRef={topButtonRef}
             page={page}
             setPage={setPage}
             topClassName={topClassName}
           />
           <ScrollButton
-            position="bottom"
+            direction="bottom"
             innerRef={bottomButtonRef}
             page={page}
             setPage={setPage}

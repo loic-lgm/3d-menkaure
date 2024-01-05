@@ -12,7 +12,8 @@ export function Menkaure({ page }) {
 
   useFrame((state, delta) => {
     if (page == 0) {
-      if (model.current.rotation.x != 0) {
+      console.log(model.current.rotation);
+      if (model.current.rotation.x > 0) {
         setShouldRotate(true);
       }
       if (model.current.rotation.x < 0) {
@@ -61,7 +62,7 @@ export function Menkaure({ page }) {
   return (
     <>
       <group dispose={null}>
-        {page == 2 && <OrbitControls />}
+        {page == 2 && <OrbitControls maxPolarAngle={Math.PI / 2} />}
         {/* Add 'target' to set the pivot point in the center of the mesh*/}
         <group ref={model} target={[0, 0, 0]}>
           <Center rotation={[-1.3, -1.93, -0.91]} scale={0.03}>

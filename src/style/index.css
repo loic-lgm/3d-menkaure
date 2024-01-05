@@ -58,3 +58,7 @@ body,
   opacity: 10%;
   cursor: default;
 }
+
+.pointer {
+  cursor: pointer;
+}

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   firstDescription,
   secondDescription,
+  thirdDescription,
 } from "../data/contentDescription";
 
 export default function App() {
@@ -49,12 +50,14 @@ export default function App() {
               far: 200,
               position: [0, 2, 8],
             }}
+            className={page == 2 && "pointer"}
           >
             <Experience page={page} />
           </Canvas>
         </div>
         {page == 0 && <BottomDescription content={firstDescription} />}
         {page == 1 && <BottomDescription content={secondDescription} />}
+        {page == 2 && <BottomDescription content={thirdDescription} />}
         <div className="scroll-button-container">
           <ScrollButton
             direction="top"

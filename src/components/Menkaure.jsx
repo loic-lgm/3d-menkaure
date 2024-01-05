@@ -1,6 +1,6 @@
 import { Center, OrbitControls, useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function Menkaure({ page }) {
   const { nodes, materials } = useGLTF(

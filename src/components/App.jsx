@@ -50,7 +50,7 @@ export default function App() {
               far: 200,
               position: [0, 2, 8],
             }}
-            className={page == 2 && "pointer"}
+            className={page == 2 ? "pointer" : ""}
           >
             <Experience page={page} />
           </Canvas>

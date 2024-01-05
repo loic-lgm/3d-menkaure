@@ -2,11 +2,11 @@ import { Stars } from "@react-three/drei";
 import Lights from "./components/Lights";
 import { Menkaure } from "./components/Menkaure";
 
-function App() {
+function Experience({ page }) {
   return (
     <>
       <Lights />
-      <Menkaure />
+      <Menkaure page={page} />
       <Stars
         radius={50}
         depth={50}
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default Experience;

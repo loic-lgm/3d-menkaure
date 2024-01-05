@@ -1,5 +1,5 @@
-import { Center, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { Center, OrbitControls, useGLTF } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 
 export function Menkaure({ page }) {
@@ -8,26 +8,60 @@ export function Menkaure({ page }) {
   );
 
   const model = useRef();
-  const [shouldRotate, setShouldRotate] = useState(true);
+  const [shouldRotate, setShouldRotate] = useState(false);
 
   useFrame((state, delta) => {
     if (page == 0) {
-      model.current.rotation.y += delta * 0.06;
-      model.current.rotation.x = 0;
-    } else {
-      // model.current.rotation.y = 0;
+      if (model.current.rotation.x != 0) {
+        setShouldRotate(true);
+      }
+      if (model.current.rotation.x < 0) {
+        setShouldRotate(false);
+      }
+      if (shouldRotate) {
+        model.current.rotation.x -= delta * 0.06;
+      } else {
+        model.current.rotation.y += delta * 0.06;
+      }
     }
-    if (model.current.rotation.x >= 1.5) {
-      setShouldRotate(false);
+
+    if (page == 1) {
+      setShouldRotate(true);
+      if (model.current.rotation.x >= 1.3) {
+        setShouldRotate(false);
+      }
+      if (shouldRotate) {
+        model.current.rotation.x += delta * 0.06;
+      }
     }
-    if (page == 1 && shouldRotate) {
-      model.current.rotation.x += delta * 0.06;
+
+    if (page == 2) {
+      if (model.current.rotation.x > 0) {
+        setShouldRotate(true);
+      }
+      if (model.current.rotation.x < 0) {
+        setShouldRotate(false);
+      }
+
+      if (shouldRotate) {
+        model.current.rotation.x -= delta * 0.06;
+      }
+    }
+  });
+
+  useThree(({ camera }) => {
+    if (page == 1) {
+      camera.position.x = 0;
+      camera.position.y = 2;
+      camera.position.z = 8;
+      camera.lookAt(0, 0, 0);
     }
   });
 
   return (
     <>
       <group dispose={null}>
+        {page == 2 && <OrbitControls />}
         {/* Add 'target' to set the pivot point in the center of the mesh*/}
         <group ref={model} target={[0, 0, 0]}>
           <Center rotation={[-1.3, -1.93, -0.91]} scale={0.03}>

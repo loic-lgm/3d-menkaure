@@ -9,12 +9,14 @@ import {
   secondDescription,
   thirdDescription,
 } from "../data/contentDescription";
+import Loading from "./Loading";
 
 export default function App() {
   const topButtonRef = useRef();
   const bottomButtonRef = useRef();
 
   const [page, setPage] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [topClassName, setTopClassName] = useState(
     "fa-solid fa-arrow-up fa-2xl light"
@@ -41,39 +43,45 @@ export default function App() {
   return (
     <>
       <div className="app-container">
-        <MainHeader />
-        <div className="canvas">
-          <Canvas
-            camera={{
-              fov: 45,
-              near: 0.1,
-              far: 200,
-              position: [0, 2, 8],
-            }}
-            className={page == 2 ? "pointer" : ""}
-          >
-            <Experience page={page} />
-          </Canvas>
-        </div>
-        {page == 0 && <BottomDescription content={firstDescription} />}
-        {page == 1 && <BottomDescription content={secondDescription} />}
-        {page == 2 && <BottomDescription content={thirdDescription} />}
-        <div className="scroll-button-container">
-          <ScrollButton
-            direction="top"
-            innerRef={topButtonRef}
-            page={page}
-            setPage={setPage}
-            topClassName={topClassName}
-          />
-          <ScrollButton
-            direction="bottom"
-            innerRef={bottomButtonRef}
-            page={page}
-            setPage={setPage}
-            bottomClassName={bottomClassName}
-          />
-        </div>
+        {!isLoaded ? (
+          <Loading setIsLoaded={setIsLoaded} />
+        ) : (
+          <>
+            <MainHeader />
+            <div className="canvas">
+              <Canvas
+                camera={{
+                  fov: 45,
+                  near: 0.1,
+                  far: 200,
+                  position: [0, 2, 8],
+                }}
+                className={page == 2 ? "pointer" : ""}
+              >
+                <Experience page={page} />
+              </Canvas>
+            </div>
+            {page == 0 && <BottomDescription content={firstDescription} />}
+            {page == 1 && <BottomDescription content={secondDescription} />}
+            {page == 2 && <BottomDescription content={thirdDescription} />}
+            <div className="scroll-button-container">
+              <ScrollButton
+                direction="top"
+                innerRef={topButtonRef}
+                page={page}
+                setPage={setPage}
+                topClassName={topClassName}
+              />
+              <ScrollButton
+                direction="bottom"
+                innerRef={bottomButtonRef}
+                page={page}
+                setPage={setPage}
+                bottomClassName={bottomClassName}
+              />
+            </div>
+          </>
+        )}
       </div>
     </>
   );

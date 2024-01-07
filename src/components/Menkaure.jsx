@@ -12,7 +12,6 @@ export function Menkaure({ page }) {
 
   useFrame((state, delta) => {
     if (page == 0) {
-      console.log(model.current.rotation);
       if (model.current.rotation.x > 0) {
         setShouldRotate(true);
       }

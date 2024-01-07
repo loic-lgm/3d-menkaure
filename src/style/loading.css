@@ -1,0 +1,27 @@
+.loading-container {
+  background: #12161b;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.loading-text {
+  color: #dfceb2;
+  font-family: "Lato", sans-serif;
+  font-size: 1.5em;
+}
+
+.start-button {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: transparent;
+  color: #dfceb2;
+  outline: inherit;
+  cursor: pointer;
+  border: 1px solid #dfceb2;
+  font-size: 1em;
+}

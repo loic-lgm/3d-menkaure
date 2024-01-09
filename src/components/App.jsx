@@ -10,10 +10,14 @@ import {
   thirdDescription,
 } from "../data/contentDescription";
 import Loading from "./Loading";
+import SoundButton from "./SoundButton";
 
 export default function App() {
   const topButtonRef = useRef();
   const bottomButtonRef = useRef();
+
+  const [sound] = useState(() => new Audio("/../menkaure.mp3"));
+  const [playSound, setPlaySound] = useState(false);
 
   const [page, setPage] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,11 +44,18 @@ export default function App() {
     }
   }, [page]);
 
+  if (playSound) {
+    sound.type = "audio/mpeg";
+    sound.play();
+  } else {
+    sound.pause();
+  }
+
   return (
     <>
       <div className="app-container">
         {!isLoaded ? (
-          <Loading setIsLoaded={setIsLoaded} />
+          <Loading setIsLoaded={setIsLoaded} setPlaySound={setPlaySound} />
         ) : (
           <>
             <MainHeader />
@@ -79,6 +90,7 @@ export default function App() {
                 setPage={setPage}
                 bottomClassName={bottomClassName}
               />
+              <SoundButton setPlaySound={setPlaySound} />
             </div>
           </>
         )}
